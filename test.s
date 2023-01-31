@@ -1,4 +1,7 @@
-	.file	"simple.c"
+	.file	"test.c"
+	.section	.rodata
+.LC0:
+	.string	"Hello World!"
 	.text
 	.globl	main
 	.type	main, @function
@@ -10,8 +13,7 @@ main:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
-	movl	$10, -4(%rbp)
-	addl	$5, -4(%rbp)
+	movq	$.LC0, -16(%rbp)
 	movl	$0, %eax
 	popq	%rbp
 	.cfi_def_cfa 7, 8
